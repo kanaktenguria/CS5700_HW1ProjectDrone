@@ -3,23 +3,24 @@ import Message.*;
 import Communicator.Socket;
 
 public class MissionLeftRotateRight implements FlyBehaviour {
-    private Message message;
-    private Socket socket;
-    public MissionLeftRotateRight(Socket socket){
-        this.socket = socket;
 
-    }
+//    public MissionLeftRotateRight(){
+//
+//    }
     @Override
-    public void doMission() throws Exception {
-        message= new TakeOff(this.socket);
+    public void doMission(Socket socket) throws Exception {
+        Message message;
+        message= new CommandMode(socket);
         message.doAction();
-        message=new MoveLeft(this.socket);
+        message= new TakeOff(socket);
         message.doAction();
-        message= new RotateAntiClockWise(this.socket);
+        message=new MoveLeft(socket);
         message.doAction();
-        message=new MoveRight(this.socket);
+        message= new RotateAntiClockWise(socket);
         message.doAction();
-        message= new Land(this.socket);
+        message=new MoveRight(socket);
+        message.doAction();
+        message= new Land(socket);
         message.doAction();
         System.out.println("Mission completed.");
     }

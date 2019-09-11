@@ -1,11 +1,17 @@
 package Communicator;
 
+import FlyBehaviour.FlyBehaviour;
+import FlyBehaviour.MissionDownUpRotate;
+import FlyBehaviour.MissionForwardLeft;
+import FlyBehaviour.MissionLeftRotateRight;
+
 import java.util.Scanner;
 
 
 public class Main {
     public static void main(String...args)throws Exception{
         Scanner scan = new Scanner(System.in);
+        FlyBehaviour flyBehaviour=null;
 
         System.out.print("Enter the IP address:");
         String iPAddress = scan.next();
@@ -19,7 +25,22 @@ public class Main {
         System.out.print("Choose a mission (Enter number):");
         int missionNumber= scan.nextInt();
 
-        Flier flier=new Flier(iPAddress, dronePort, missionNumber);
+        if(missionNumber==1){
+            MissionForwardLeft missionForwardLeft=new MissionForwardLeft();
+            flyBehaviour=missionForwardLeft;
+        }
+
+        if(missionNumber==2){
+            MissionDownUpRotate missionDownUpRotate=new MissionDownUpRotate();
+            flyBehaviour= missionDownUpRotate;
+        }
+
+        if(missionNumber==3){
+            MissionLeftRotateRight missionLeftRotateRight=new MissionLeftRotateRight();
+            flyBehaviour= missionLeftRotateRight;
+        }
+
+        Flier flier=new Flier(iPAddress, dronePort, flyBehaviour);
         flier.doMission();
     }
 }

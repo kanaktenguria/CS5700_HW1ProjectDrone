@@ -10,6 +10,7 @@ public class Socket {
     private int dronePort;
     private InetAddress droneAddress;
     private DatagramSocket udpClient =  new DatagramSocket();
+    private DatagramPacket datagramPacket;
 //    String request= null;
     private String reply = null;
 
@@ -19,7 +20,7 @@ public class Socket {
         this.dronePort= dronePort;
         udpClient.setSoTimeout(1000);
 
-        int maxRetries = 3;
+   /*     int maxRetries = 3;
         while (maxRetries > 0){
         sendRequest("command");
         String reply= receiveRequest();
@@ -29,7 +30,7 @@ public class Socket {
             }
             System.out.println("Remaining retries: " + maxRetries);
             maxRetries--;
-        }
+        }*/ //Is this more logical?
     }
 
     public void sendRequest(String request) throws Exception{
@@ -39,7 +40,7 @@ public class Socket {
         System.out.println("Sent " + request + " bytes to Drone"); // with address " + droneAddress.toString() + ":" + dronePort);
     }
 
-    private String receiveRequest() throws Exception{
+    public String receiveRequest() throws Exception{
         byte[] bytesReceived = new byte[64];
         DatagramPacket datagramPacket = new DatagramPacket(bytesReceived, 64);
         try {
@@ -54,6 +55,10 @@ public class Socket {
             System.out.println(reply + " received.");
         }
         return reply;
+    }
+
+    public InetAddress getDroneAddress() {
+        return droneAddress;
     }
 }
 

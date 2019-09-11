@@ -3,5 +3,5 @@ import Communicator.*;
 
 public interface FlyBehaviour {
 
-    public void doMission() throws Exception;
+    public void doMission(Socket socket) throws Exception;
 }

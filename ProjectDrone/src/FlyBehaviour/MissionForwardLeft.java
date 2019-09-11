@@ -3,23 +3,23 @@ import Message.*;
 import Communicator.Socket;
 
 public class MissionForwardLeft implements FlyBehaviour {
-    private Message message;
-    private Socket socket;
-    public MissionForwardLeft(Socket socket){
-        this.socket = socket;
-
-    }
+//    public MissionForwardLeft(){
+//
+//    }
     @Override
-    public void doMission() throws Exception {
-        message= new TakeOff(this.socket);
+    public void doMission(Socket socket) throws Exception {
+        Message message;
+        message= new CommandMode(socket);
         message.doAction();
-        message=new MoveForward(this.socket);
+        message= new TakeOff(socket);
         message.doAction();
-        message= new MoveLeft(this.socket);
+        message=new MoveForward(socket);
         message.doAction();
-        message=new MoveBackward(this.socket);
+        message= new MoveLeft(socket);
         message.doAction();
-        message= new Land(this.socket);
+        message=new MoveBackward(socket);
+        message.doAction();
+        message= new Land(socket);
         message.doAction();
         System.out.println("Mission completed.");
     }
