@@ -1,18 +1,18 @@
 package Message;
 
-import Communicator.Socket;
+import Communicator.DroneCommunicator;
 
-public class CommandMode implements Message{
-    private Socket socket;
-    public CommandMode(Socket socket) {
-        this.socket=socket;
-    }
+public class CommandMode extends Message{
+//    private DroneCommunicator droneCommunicator;
+//    public CommandMode() {
+//        this.droneCommunicator = droneCommunicator;
+//    }
     @Override
-    public void doAction() throws Exception {
+    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
         int maxRetries = 3;
         while (maxRetries > 0){
-            socket.sendRequest("command");
-            String reply= socket.receiveRequest();
+            droneCommunicator.sendRequest("command");
+            String reply= droneCommunicator.receiveRequest();
             if (reply.equals("ok")) {
                 System.out.println("Entering command mode.. \nSending mission commands.");
                 break;

@@ -1,15 +1,15 @@
 package Message;
-import Communicator.Socket;
+import Communicator.DroneCommunicator;
 
-public class MoveDown implements Message {
-    private Socket socket;
-    public MoveDown(Socket socket) {
-        this.socket= socket;
-    }
+public class MoveDown extends Message {
+//    private DroneCommunicator droneCommunicator;
+//    public MoveDown(DroneCommunicator droneCommunicator) {
+//        this.droneCommunicator = droneCommunicator;
+//    }
 
     @Override
-    public void doAction() throws Exception {
-        socket.sendRequest("down 50");
+    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+        droneCommunicator.sendRequest("down 50");
         Thread.sleep(5000);
     }
 }

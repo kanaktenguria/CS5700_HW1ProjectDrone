@@ -1,15 +1,15 @@
 package Message;
-import Communicator.Socket;
+import Communicator.DroneCommunicator;
 
-public class MoveBackward implements Message {
-    private Socket socket;
-    public MoveBackward(Socket socket) {
-        this.socket= socket;
-    }
+public class MoveBackward extends Message {
+//    private DroneCommunicator droneCommunicator;
+//    public MoveBackward(DroneCommunicator droneCommunicator) {
+//        this.droneCommunicator = droneCommunicator;
+//    }
 
     @Override
-    public void doAction() throws Exception {
-        socket.sendRequest("back 50");
+    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+        droneCommunicator.sendRequest("back 50");
         Thread.sleep(5000);
     }
 }

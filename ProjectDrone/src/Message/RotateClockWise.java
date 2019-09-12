@@ -1,15 +1,15 @@
 package Message;
-import Communicator.Socket;
+import Communicator.DroneCommunicator;
 
-public class RotateClockWise implements Message {
-    private Socket socket;
-    public RotateClockWise(Socket socket) {
-        this.socket=socket;
-    }
+public class RotateClockWise extends Message {
+//    private DroneCommunicator droneCommunicator;
+//    public RotateClockWise(DroneCommunicator droneCommunicator) {
+//        this.droneCommunicator = droneCommunicator;
+//    }
 
     @Override
-    public void doAction() throws Exception {
-        socket.sendRequest("cw 360");
+    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+        droneCommunicator.sendRequest("cw 360");
         Thread.sleep(5000);
     }
 }

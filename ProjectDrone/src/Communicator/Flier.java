@@ -2,15 +2,14 @@ package Communicator;
 import FlyBehaviour.FlyBehaviour;
 
 class Flier{
-    private FlyBehaviour flyBehaviour;
-    private Socket socket;
+    private DroneCommunicator droneCommunicator;
 
-    Flier(String iPAddress, int dronePort, FlyBehaviour mission) throws Exception {
-        socket = new Socket(iPAddress, dronePort);
-        this.flyBehaviour=mission;
+    public void initialize(String iPAddress, int dronePort) throws Exception {
+        droneCommunicator = new DroneCommunicator(iPAddress, dronePort);
+        droneCommunicator.initialize();
     }
 
-    void doMission() throws Exception {
-        flyBehaviour.doMission(socket);
+    void doMission(FlyBehaviour flyBehaviour) throws Exception {
+        flyBehaviour.doMission(droneCommunicator);
     }
 }

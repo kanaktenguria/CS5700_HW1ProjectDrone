@@ -1,27 +1,27 @@
 package FlyBehaviour;
 import Message.*;
-import Communicator.Socket;
+import Communicator.DroneCommunicator;
 
-public class MissionDownUpRotate implements FlyBehaviour {
+public class MissionDownUpRotate extends FlyBehaviour {
     //    public MissionDownUpRotate(){
 //
 //
 //    }
     @Override
-    public void doMission(Socket socket) throws Exception {
+    public void doMission(DroneCommunicator droneCommunicator) throws Exception {
         Message message;
-        message= new CommandMode(socket);
-        message.doAction();
-        message= new TakeOff(socket);
-        message.doAction();
-        message=new MoveDown(socket);
-        message.doAction();
-        message= new MoveUp(socket);
-        message.doAction();
-        message=new RotateClockWise(socket);
-        message.doAction();
-        message= new Land(socket);
-        message.doAction();
+//        message= new CommandMode();
+//        message.doAction(droneCommunicator);
+        message= new TakeOff();
+        message.doAction(droneCommunicator);
+        message=new MoveDown();
+        message.doAction(droneCommunicator);
+        message= new MoveUp();
+        message.doAction(droneCommunicator);
+        message=new RotateClockWise();
+        message.doAction(droneCommunicator);
+        message= new Land();
+        message.doAction(droneCommunicator);
         System.out.println("Mission completed.");
     }
 }

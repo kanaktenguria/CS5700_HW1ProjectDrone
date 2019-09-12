@@ -1,15 +1,15 @@
 package Message;
-import Communicator.Socket;
+import Communicator.DroneCommunicator;
 
-public class TakeOff implements Message {
-    private Socket socket;
-    public TakeOff(Socket socket) {
-        this.socket= socket;
-    }
+public class TakeOff extends Message {
+//    private DroneCommunicator droneCommunicator;
+//    public TakeOff(DroneCommunicator droneCommunicator) {
+//        this.droneCommunicator = droneCommunicator;
+//    }
 
     @Override
-    public void doAction() throws Exception {
-        this.socket.sendRequest("takeoff");
+    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+        droneCommunicator.sendRequest("takeoff");
         Thread.sleep(5000);
     }
 }

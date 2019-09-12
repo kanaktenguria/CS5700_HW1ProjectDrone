@@ -1,11 +1,11 @@
 package Message;
 import Communicator.*;
 
-public interface Message {
+public abstract class Message {
 //    Socket socket;
 //    public Message(Socket socket){
 //        this.socket = socket;
 //
 //    }
-    public void doAction() throws Exception;
+    public abstract void doAction(DroneCommunicator droneCommunicator) throws Exception;
 }

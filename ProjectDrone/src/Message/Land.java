@@ -1,15 +1,15 @@
 package Message;
-import Communicator.Socket;
+import Communicator.DroneCommunicator;
 
-public class Land implements Message {
-    private Socket socket;
-    public Land(Socket socket) {
-        this.socket=socket;
-    }
+public class Land extends Message {
+//    private DroneCommunicator droneCommunicator;
+//    public Land(DroneCommunicator droneCommunicator) {
+//        this.droneCommunicator = droneCommunicator;
+//    }
 
     @Override
-    public void doAction() throws Exception {
-        socket.sendRequest("land");
+    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+        droneCommunicator.sendRequest("land");
         Thread.sleep(5000);
     }
 }

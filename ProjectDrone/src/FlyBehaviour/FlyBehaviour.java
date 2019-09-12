@@ -1,7 +1,7 @@
 package FlyBehaviour;
 import Communicator.*;
 
-public interface FlyBehaviour {
+public abstract class FlyBehaviour {
 
-    public void doMission(Socket socket) throws Exception;
+    public abstract void doMission(DroneCommunicator droneCommunicator) throws Exception;
 }

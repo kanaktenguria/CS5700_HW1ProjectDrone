@@ -40,7 +40,8 @@ public class Main {
             flyBehaviour= missionLeftRotateRight;
         }
 
-        Flier flier=new Flier(iPAddress, dronePort, flyBehaviour);
-        flier.doMission();
+        Flier flier=new Flier();
+        flier.initialize(iPAddress, dronePort);
+        flier.doMission(flyBehaviour);
     }
 }
